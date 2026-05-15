@@ -63,7 +63,7 @@ Shows how much excess charge each atom carries, helping you understand polarity,
 
 ## Screenshots
 
-> *(Screenshots coming soon)*
+![ClearQC screenshot](docs/screenshot.png)
 
 ---
 
