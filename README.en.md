@@ -79,7 +79,7 @@ Shows how much excess charge each atom carries, helping you understand polarity,
 | Excited states (TD-DFT) | Compute light absorption and generate a UV-Vis spectrum |
 | Solvent effects | Implicit solvation (PCM) for water, DMSO, methanol, and 5 more |
 | 3D visualization | Ball-and-stick model + HOMO/LUMO/density isosurfaces |
-| AI interpretation | Connect an AI model to auto-explain results or diagnose failures |
+| AI Assistant | Local LLM (built-in llama.cpp) or remote API, auto-explains results and diagnoses failures |
 | Export | Export results as JSON or CSV for further analysis |
 | Languages | 中文 / English / Deutsch / 日本語 |
 | Dark / Light theme | Easy on the eyes |

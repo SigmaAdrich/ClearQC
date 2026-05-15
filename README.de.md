@@ -79,7 +79,7 @@ Zeigt, wie viel überschüssige Ladung jedes Atom trägt — hilfreich zum Verst
 | Angeregte Zustände (TD-DFT) | Lichtabsorption berechnen und UV-Vis-Spektrum erzeugen |
 | Lösungsmitteleffekte | Implizite Solvatation (PCM) für Wasser, DMSO, Methanol und 5 weitere |
 | 3D-Visualisierung | Kugel-Stab-Modell + HOMO/LUMO/Elektronendichte-Isoflächen |
-| KI-Interpretation | KI-Modell anschließen für automatische Ergebnis-Erklärung oder Fehlerdiagnose |
+| KI-Assistent | Lokales LLM (integriertes llama.cpp) oder Remote-API, automatische Ergebnis-Erklärung und Fehlerdiagnose |
 | Export | Ergebnisse als JSON oder CSV exportieren |
 | Sprachen | 中文 / English / Deutsch / 日本語 |
 | Hell-/Dunkel-Modus | Augenschonend |
