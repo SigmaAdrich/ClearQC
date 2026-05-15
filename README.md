@@ -43,7 +43,7 @@ HOMO 是"最高占据分子轨道"，LUMO 是"最低未占分子轨道"。这两
 
 ## 截图预览
 
-> *(截图待补充)*
+![ClearQC 界面截图](docs/screenshot.png)
 
 ---
 
