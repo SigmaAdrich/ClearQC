@@ -63,7 +63,7 @@ Zeigt, wie viel überschüssige Ladung jedes Atom trägt — hilfreich zum Verst
 
 ## Screenshots
 
-> *(Screenshots folgen demnächst)*
+![ClearQC Screenshot](docs/screenshot.png)
 
 ---
 
