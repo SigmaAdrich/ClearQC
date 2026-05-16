@@ -61,7 +61,7 @@ HOMO 是"最高占据分子轨道"，LUMO 是"最低未占分子轨道"。这两
 | 激发态（TD-DFT） | 计算光吸收，生成 UV-Vis 光谱 |
 | 溶剂效应 | 8 种隐式溶剂（ddCOSMO）：水、DMSO、甲醇、乙醇、乙腈、THF、DCM、甲苯 |
 | 3D 可视化 | 球棍模型 + HOMO/LUMO/电子密度等值面 |
-| AI 助手 | 支持本地 LLM（内置 llama.cpp）或远程 OpenAI 兼容 API，自动解读结果、诊断失败原因 |
+| AI 助手 | 支持远程 OpenAI 兼容 API，自动解读结果、诊断失败原因 |
 | 结果导出 | 导出 JSON / CSV / IR / UV-Vis 数据 |
 | 多语言 | 中文 / English / Deutsch / 日本語 |
 | 主题与字号 | 深色 / 浅色主题，4 档字号缩放 |

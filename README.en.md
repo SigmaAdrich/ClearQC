@@ -81,7 +81,7 @@ Shows how much excess charge each atom carries, helping you understand polarity,
 | Excited states (TD-DFT) | Compute light absorption and generate a UV-Vis spectrum |
 | Solvent effects | 8 implicit solvents (ddCOSMO): water, DMSO, methanol, ethanol, acetonitrile, THF, DCM, toluene |
 | 3D visualization | Ball-and-stick model + HOMO/LUMO/density isosurfaces |
-| AI Assistant | Local LLM (built-in llama.cpp) or remote OpenAI-compatible API, auto-explains results and diagnoses failures |
+| AI Assistant | Remote OpenAI-compatible API, auto-explains results and diagnoses failures |
 | Export | Results as JSON / CSV / IR / UV-Vis data |
 | Languages | 中文 / English / Deutsch / 日本語 |
 | Theme & font size | Dark / Light theme, 4-step font size scaling |

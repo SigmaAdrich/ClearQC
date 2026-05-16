@@ -81,7 +81,7 @@ Zeigt, wie viel überschüssige Ladung jedes Atom trägt — hilfreich zum Verst
 | Angeregte Zustände (TD-DFT) | Lichtabsorption berechnen und UV-Vis-Spektrum erzeugen |
 | Lösungsmitteleffekte | 8 implizite Lösungsmittel (ddCOSMO): Wasser, DMSO, Methanol, Ethanol, Acetonitril, THF, DCM, Toluol |
 | 3D-Visualisierung | Kugel-Stab-Modell + HOMO/LUMO/Elektronendichte-Isoflächen |
-| KI-Assistent | Lokales LLM (integriertes llama.cpp) oder Remote-API (OpenAI-kompatibel), automatische Ergebnis-Erklärung und Fehlerdiagnose |
+| KI-Assistent | Remote-API (OpenAI-kompatibel), automatische Ergebnis-Erklärung und Fehlerdiagnose |
 | Export | Ergebnisse als JSON / CSV / IR / UV-Vis-Daten |
 | Sprachen | 中文 / English / Deutsch / 日本語 |
 | Theme & Schriftgröße | Hell-/Dunkel-Modus, 4 Schriftgrößen-Stufen |
