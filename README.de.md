@@ -6,7 +6,7 @@
 
 [📥 Download](https://github.com/SigmaAdrich/ClearQC/releases/latest) · [🐛 Fehler melden](https://github.com/SigmaAdrich/ClearQC/issues)
 
-**[中文](README.md) · [English](README.en.md) · Deutsch · [日本語](README.ja.md)**
+**[English](README.md) · [中文](README.zh.md) · Deutsch · [日本語](README.ja.md)**
 
 </div>
 
