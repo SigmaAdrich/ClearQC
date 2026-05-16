@@ -63,7 +63,9 @@ Shows how much excess charge each atom carries, helping you understand polarity,
 
 ## Screenshots
 
-![ClearQC screenshot](docs/screenshot.png)
+![ClearQC main interface](docs/screenshot.png)
+
+![ClearQC result card and 3D viewer](docs/screenshot2.png)
 
 ---
 
@@ -71,18 +73,17 @@ Shows how much excess charge each atom carries, helping you understand polarity,
 
 | Feature | Description |
 |---------|-------------|
-| Molecule library | Type a name (English, Chinese, or IUPAC) to auto-complete and start a calculation |
-| File import | Drag and drop XYZ, PDB, MOL/SDF, or Gaussian GJF files |
-| Methods | HF · 21 DFT functionals (B3LYP, PBE0, M06-2X, ωB97X-V, CAM-B3LYP …) · post-HF (MP2, CCSD, CCSD(T)) |
+| Molecule input | Library lookup (English/中文/IUPAC), drag-and-drop XYZ/PDB/MOL/GJF, or **paste SMILES** |
+| Methods | HF · 21 DFT functionals (B3LYP, PBE0, M06-2X, ωB97X-V …) · post-HF (MP2, CCSD, CCSD(T)) · optional D3-BJ dispersion · density fitting (RI-J) |
 | Basis sets | 28 basis sets across Pople, Dunning, Karlsruhe, pcseg, and ECP families |
-| Single-point energy | Calculate the electronic energy for a given geometry |
-| Geometry optimization | Find the most stable molecular structure automatically |
-| Frequency analysis | Compute vibrational frequencies and generate an IR spectrum |
-| Excited states (TD-DFT) | Compute light absorption and generate a UV-Vis spectrum |
-| Solvent effects | 8 implicit solvents (ddCOSMO): water, DMSO, methanol, ethanol, acetonitrile, THF, DCM, toluene |
-| 3D visualization | Ball-and-stick model + HOMO/LUMO/density isosurfaces |
+| Tasks | Single point · geometry optimization · **transition state · IRC** · frequency · TD-DFT excited states · **NMR (shielding + J coupling)** |
+| Solvent effects | 8 implicit solvents (water, DMSO, methanol …) · ddCOSMO or PCM model |
+| Properties (auto) | Total energy, dipole, **polarizability**, Mulliken **& Löwdin** charges, IR spectrum, NMR shielding, variable-temperature thermochemistry |
+| 3D visualization | Ball-and-stick model + HOMO/LUMO/density isosurfaces + **clickable normal-mode animation** |
 | AI Assistant | Remote OpenAI-compatible API, auto-explains results and diagnoses failures |
-| Export | Results as JSON / CSV / IR / UV-Vis data |
+| Templates | Save and recall favourite parameter combinations |
+| Export | JSON / CSV / IR / UV-Vis data · **copy as Gaussian .gjf** |
+| Quality of life | Desktop notifications on completion · Ctrl+F chat search · multi-tab sessions |
 | Languages | English / 中文 / Deutsch / 日本語 |
 | Theme & font size | Dark / Light theme, 4-step font size scaling |
 
@@ -146,8 +147,11 @@ The card defaults to a recommended method and basis set (B3LYP / def2-SVP — a 
 
 - **Method**: HF, 21 DFT functionals (B3LYP, PBE0, M06-2X, ωB97X-V, CAM-B3LYP, …), or post-HF (MP2 / CCSD / CCSD(T))
 - **Basis**: 28 basis sets grouped by family (Pople, Dunning, Karlsruhe, pcseg, ECP); default def2-SVP
-- **Task**: Single Point (SP) / Optimization (Opt) / Frequency (Freq) / Excited States
-- **Solvent**: Pick one of 8 solvents to simulate solution-phase conditions
+- **Task**: Single Point (SP) / Optimization / **Transition State** / **IRC** / Frequency / Excited States / **NMR**
+- **Solvent**: Pick one of 8 solvents (ddCOSMO or PCM model)
+- **Dispersion**: Off or D3-BJ — recommended for most DFT functionals
+- **Density fit (RI-J)**: 5–10× SCF speed-up on medium molecules; negligible accuracy loss
+- **Templates** ☷: save/recall favourite parameter combinations
 
 For your first try, leave everything at the defaults.
 
@@ -161,12 +165,16 @@ A small molecule like caffeine takes about 1–3 minutes at the default settings
 
 When the calculation finishes, a result card appears showing:
 
-- Total energy (in Hartree)
-- Convergence status
-- Mulliken atomic charges
-- Calculation time
+- Total energy + correlation energy (post-HF) in Hartree
+- Convergence status + elapsed time
+- Mulliken **and** Löwdin atomic charges
+- Dipole moment + isotropic polarizability
+- IR spectrum / UV-Vis bands / NMR shielding & J couplings (depending on task)
+- A **clickable IR mode list** — pick a mode and watch atoms oscillate in the 3D viewer
 
 The right panel simultaneously updates with the 3D structure. Use the dropdown menu to switch between **HOMO, LUMO, and electron density** isosurfaces.
+
+A **Copy .gjf** button generates a Gaussian-style input deck from the result so you can replay it in Gaussian / ORCA. The desktop fires a **system notification** when a long-running calculation finishes while you're in another window.
 
 **Step 5 (optional): Let AI explain the results**
 

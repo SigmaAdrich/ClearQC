@@ -43,7 +43,9 @@ HOMO 是"最高占据分子轨道"，LUMO 是"最低未占分子轨道"。这两
 
 ## 截图预览
 
-![ClearQC 界面截图](docs/screenshot.png)
+![ClearQC 主界面](docs/screenshot.png)
+
+![ClearQC 结果卡片与 3D 可视化](docs/screenshot2.png)
 
 ---
 
@@ -51,18 +53,17 @@ HOMO 是"最高占据分子轨道"，LUMO 是"最低未占分子轨道"。这两
 
 | 功能 | 说明 |
 |------|------|
-| 分子库检索 | 输入中文名、英文名或 IUPAC 名称，自动找到分子并准备计算 |
-| 文件导入 | 拖拽导入 XYZ、PDB、MOL/SDF、Gaussian GJF 格式 |
-| 计算方法 | HF · 21 种 DFT 泛函（B3LYP、PBE0、M06-2X、ωB97X-V、CAM-B3LYP …）· 后 HF（MP2、CCSD、CCSD(T)） |
+| 分子输入 | 分子库检索（中/英文/IUPAC）、拖拽导入 XYZ/PDB/MOL/GJF，或**直接粘贴 SMILES** |
+| 计算方法 | HF · 21 种 DFT 泛函（B3LYP、PBE0、M06-2X、ωB97X-V …）· 后 HF（MP2、CCSD、CCSD(T)）· 可选 D3-BJ 色散校正 · 密度拟合（RI-J） |
 | 基组 | 28 个基组，覆盖 Pople、Dunning、Karlsruhe、pcseg、ECP 家族 |
-| 单点能计算 | 计算给定构型下的电子能量 |
-| 几何优化 | 自动搜索最稳定的分子构型 |
-| 频率分析 | 计算振动频率，生成红外光谱 |
-| 激发态（TD-DFT） | 计算光吸收，生成 UV-Vis 光谱 |
-| 溶剂效应 | 8 种隐式溶剂（ddCOSMO）：水、DMSO、甲醇、乙醇、乙腈、THF、DCM、甲苯 |
-| 3D 可视化 | 球棍模型 + HOMO/LUMO/电子密度等值面 |
+| 任务类型 | 单点能 · 几何优化 · **过渡态搜索 · IRC 反应路径** · 频率 · TD-DFT 激发态 · **NMR（屏蔽 + J 耦合）** |
+| 溶剂效应 | 8 种隐式溶剂（水、DMSO、甲醇 …）· ddCOSMO 或 PCM 模型 |
+| 自动计算属性 | 总能量、偶极矩、**极化率**、Mulliken **与 Löwdin** 电荷、IR 谱、NMR 屏蔽、可变温热化学 |
+| 3D 可视化 | 球棍模型 + HOMO/LUMO/电子密度等值面 + **可点击的振动模态动画** |
 | AI 助手 | 支持远程 OpenAI 兼容 API，自动解读结果、诊断失败原因 |
-| 结果导出 | 导出 JSON / CSV / IR / UV-Vis 数据 |
+| 计算模板 | 保存常用参数组合，下次一键调用 |
+| 结果导出 | JSON / CSV / IR / UV-Vis 数据 · **复制为 Gaussian .gjf** |
+| 体验细节 | 计算完成系统通知 · Ctrl+F 聊天搜索 · 多标签会话 |
 | 多语言 | English / 中文 / Deutsch / 日本語 |
 | 主题与字号 | 深色 / 浅色主题，4 档字号缩放 |
 
@@ -126,8 +127,11 @@ ClearQC 目前只支持 **Windows 10 / 11（64 位）**。
 
 - **方法（Method）**：HF、21 种 DFT 泛函（B3LYP、PBE0、M06-2X、ωB97X-V、CAM-B3LYP 等），或后 HF 方法 MP2 / CCSD / CCSD(T)
 - **基组（Basis）**：28 个基组按家族分组（Pople、Dunning、Karlsruhe、pcseg、ECP），默认 def2-SVP
-- **任务（Task）**：单点能（SP）/ 几何优化（Opt）/ 频率（Freq）/ 激发态（Excited）
-- **溶剂**：如果你想模拟溶液中的情况，在下拉框里选一种溶剂（共 8 种）
+- **任务（Task）**：单点能 / 几何优化 / **过渡态（TS opt）** / **IRC** / 频率（Freq）/ 激发态 / **NMR**
+- **溶剂**：8 种溶剂中选一种（ddCOSMO 或 PCM 模型）
+- **色散（Dispersion）**：关闭 或 D3-BJ —— 大部分 DFT 泛函推荐启用
+- **密度拟合（RI-J）**：中等大小分子的 SCF 提速 5-10 倍，几乎不损精度
+- **模板（Templates）** ☷：保存/调用常用参数组合
 
 第一次用的话，保持默认就好。
 
@@ -141,12 +145,16 @@ ClearQC 目前只支持 **Windows 10 / 11（64 位）**。
 
 计算完成后，结果卡片会自动出现，显示：
 
-- 总能量（单位：Hartree）
-- 是否收敛
-- Mulliken 原子电荷
-- 计算耗时
+- 总能量 + 相关能（后 HF）单位 Hartree
+- 收敛状态 + 计算耗时
+- Mulliken **与** Löwdin 原子电荷
+- 偶极矩 + 各向同性极化率
+- IR 谱 / UV-Vis 吸收带 / NMR 屏蔽与 J 耦合（视任务而定）
+- **可点击的 IR 模式列表** —— 选一个模式，3D 可视化里原子开始按该模态振动
 
 右侧面板同步显示三维结构。点击右上角的下拉框，可以切换查看 **HOMO、LUMO、电子密度**等轨道等值面。
+
+**Copy .gjf** 按钮把当前结果转成 Gaussian/ORCA 风格的输入文件方便复算。任务跑很久时切到别的窗口干别的，算完会有 **桌面通知** 提醒。
 
 **第五步（可选）：让 AI 解读结果**
 

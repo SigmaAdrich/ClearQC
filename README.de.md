@@ -63,7 +63,9 @@ Zeigt, wie viel überschüssige Ladung jedes Atom trägt — hilfreich zum Verst
 
 ## Screenshots
 
-![ClearQC Screenshot](docs/screenshot.png)
+![ClearQC Hauptoberfläche](docs/screenshot.png)
+
+![ClearQC Ergebniskarte und 3D-Viewer](docs/screenshot2.png)
 
 ---
 
@@ -71,18 +73,17 @@ Zeigt, wie viel überschüssige Ladung jedes Atom trägt — hilfreich zum Verst
 
 | Funktion | Beschreibung |
 |----------|-------------|
-| Molekülbibliothek | Name eingeben (Deutsch, Englisch oder IUPAC) → Autovervollständigung → Berechnung starten |
-| Datei-Import | XYZ-, PDB-, MOL/SDF- oder Gaussian-GJF-Dateien per Drag & Drop |
-| Methoden | HF · 21 DFT-Funktionale (B3LYP, PBE0, M06-2X, ωB97X-V, CAM-B3LYP …) · Post-HF (MP2, CCSD, CCSD(T)) |
+| Moleküleingabe | Bibliothekssuche (Deutsch/Englisch/IUPAC), Drag & Drop von XYZ/PDB/MOL/GJF, oder **SMILES einfügen** |
+| Methoden | HF · 21 DFT-Funktionale (B3LYP, PBE0, M06-2X, ωB97X-V …) · Post-HF (MP2, CCSD, CCSD(T)) · optional D3-BJ-Dispersion · Density Fitting (RI-J) |
 | Basissätze | 28 Basissätze aus den Familien Pople, Dunning, Karlsruhe, pcseg und ECP |
-| Einzelpunktenergie | Elektronische Energie für eine gegebene Geometrie berechnen |
-| Geometrieoptimierung | Stabilste Molekülstruktur automatisch finden |
-| Frequenzanalyse | Schwingungsfrequenzen berechnen und IR-Spektrum erzeugen |
-| Angeregte Zustände (TD-DFT) | Lichtabsorption berechnen und UV-Vis-Spektrum erzeugen |
-| Lösungsmitteleffekte | 8 implizite Lösungsmittel (ddCOSMO): Wasser, DMSO, Methanol, Ethanol, Acetonitril, THF, DCM, Toluol |
-| 3D-Visualisierung | Kugel-Stab-Modell + HOMO/LUMO/Elektronendichte-Isoflächen |
+| Aufgaben | Einzelpunkt · Geometrieoptimierung · **Übergangszustand · IRC** · Frequenz · TD-DFT angeregte Zustände · **NMR (Abschirmung + J-Kopplung)** |
+| Lösungsmitteleffekte | 8 implizite Lösungsmittel (Wasser, DMSO, Methanol …) · ddCOSMO oder PCM-Modell |
+| Automatische Eigenschaften | Gesamtenergie, Dipol, **Polarisierbarkeit**, Mulliken- **und** Löwdin-Ladungen, IR-Spektrum, NMR-Abschirmung, T-abhängige Thermochemie |
+| 3D-Visualisierung | Kugel-Stab-Modell + HOMO/LUMO/Elektronendichte-Isoflächen + **klickbare Normalmoden-Animation** |
 | KI-Assistent | Remote-API (OpenAI-kompatibel), automatische Ergebnis-Erklärung und Fehlerdiagnose |
-| Export | Ergebnisse als JSON / CSV / IR / UV-Vis-Daten |
+| Vorlagen | Häufig genutzte Parameterkombinationen speichern und laden |
+| Export | JSON / CSV / IR / UV-Vis-Daten · **Als Gaussian .gjf kopieren** |
+| Komfort | Desktop-Benachrichtigung bei Fertigstellung · Strg+F Chat-Suche · Multi-Tab-Sitzungen |
 | Sprachen | English / 中文 / Deutsch / 日本語 |
 | Theme & Schriftgröße | Hell-/Dunkel-Modus, 4 Schriftgrößen-Stufen |
 
@@ -146,8 +147,11 @@ Die Karte verwendet bereits empfohlene Standardwerte (B3LYP / def2-SVP — gute 
 
 - **Methode**: HF, 21 DFT-Funktionale (B3LYP, PBE0, M06-2X, ωB97X-V, CAM-B3LYP …) oder Post-HF (MP2 / CCSD / CCSD(T))
 - **Basis**: 28 Basissätze nach Familien gruppiert (Pople, Dunning, Karlsruhe, pcseg, ECP); Standard ist def2-SVP
-- **Aufgabe**: Einzelpunkt (SP) / Optimierung (Opt) / Frequenz (Freq) / Angeregte Zustände
-- **Lösungsmittel**: Eines von 8 Lösungsmitteln auswählen, um Berechnungen in Lösung zu simulieren
+- **Aufgabe**: Einzelpunkt / Optimierung / **Übergangszustand (TS opt)** / **IRC** / Frequenz / Angeregte Zustände / **NMR**
+- **Lösungsmittel**: Eines von 8 Lösungsmitteln (ddCOSMO oder PCM-Modell)
+- **Dispersion**: Aus oder D3-BJ — für die meisten DFT-Funktionale empfohlen
+- **Density Fit (RI-J)**: 5-10× SCF-Beschleunigung bei mittelgroßen Molekülen, vernachlässigbarer Genauigkeitsverlust
+- **Vorlagen** ☷: Parameterkombinationen speichern/laden
 
 Beim ersten Versuch einfach alles bei den Standardwerten lassen.
 
@@ -161,12 +165,16 @@ Ein kleines Molekül wie Coffein benötigt mit den Standardwerten (B3LYP / def2-
 
 Nach Abschluss der Berechnung erscheint eine Ergebniskarte mit:
 
-- Gesamtenergie (in Hartree)
-- Konvergenzstatus
-- Mulliken-Atomladungen
-- Berechnungszeit
+- Gesamtenergie + Korrelationsenergie (Post-HF) in Hartree
+- Konvergenzstatus + Berechnungszeit
+- Mulliken- **und** Löwdin-Atomladungen
+- Dipolmoment + isotrope Polarisierbarkeit
+- IR-Spektrum / UV-Vis-Banden / NMR-Abschirmung & J-Kopplungen (je nach Aufgabe)
+- **Klickbare IR-Modentabelle** — Modus auswählen und Atome im 3D-Viewer schwingen sehen
 
 Das rechte Panel zeigt gleichzeitig die 3D-Struktur. Mit dem Dropdown-Menü kannst du zwischen **HOMO, LUMO und Elektronendichte**-Isoflächen wechseln.
+
+Eine **Copy .gjf**-Schaltfläche erzeugt aus dem Ergebnis ein Gaussian-Eingabedeck zum Wiederabspielen in Gaussian / ORCA. Der Desktop sendet eine **Systembenachrichtigung**, wenn eine längere Berechnung im Hintergrund fertig wird.
 
 **Schritt 5 (optional): KI-Erklärung der Ergebnisse**
 
