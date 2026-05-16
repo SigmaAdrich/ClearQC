@@ -83,7 +83,7 @@ Shows how much excess charge each atom carries, helping you understand polarity,
 | 3D visualization | Ball-and-stick model + HOMO/LUMO/density isosurfaces |
 | AI Assistant | Remote OpenAI-compatible API, auto-explains results and diagnoses failures |
 | Export | Results as JSON / CSV / IR / UV-Vis data |
-| Languages | 中文 / English / Deutsch / 日本語 |
+| Languages | English / 中文 / Deutsch / 日本語 |
 | Theme & font size | Dark / Light theme, 4-step font size scaling |
 
 ---

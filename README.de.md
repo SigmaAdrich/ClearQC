@@ -83,7 +83,7 @@ Zeigt, wie viel überschüssige Ladung jedes Atom trägt — hilfreich zum Verst
 | 3D-Visualisierung | Kugel-Stab-Modell + HOMO/LUMO/Elektronendichte-Isoflächen |
 | KI-Assistent | Remote-API (OpenAI-kompatibel), automatische Ergebnis-Erklärung und Fehlerdiagnose |
 | Export | Ergebnisse als JSON / CSV / IR / UV-Vis-Daten |
-| Sprachen | 中文 / English / Deutsch / 日本語 |
+| Sprachen | English / 中文 / Deutsch / 日本語 |
 | Theme & Schriftgröße | Hell-/Dunkel-Modus, 4 Schriftgrößen-Stufen |
 
 ---
