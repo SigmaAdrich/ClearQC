@@ -73,16 +73,18 @@ Zeigt, wie viel überschüssige Ladung jedes Atom trägt — hilfreich zum Verst
 |----------|-------------|
 | Molekülbibliothek | Name eingeben (Deutsch, Englisch oder IUPAC) → Autovervollständigung → Berechnung starten |
 | Datei-Import | XYZ-, PDB-, MOL/SDF- oder Gaussian-GJF-Dateien per Drag & Drop |
+| Methoden | HF · 21 DFT-Funktionale (B3LYP, PBE0, M06-2X, ωB97X-V, CAM-B3LYP …) · Post-HF (MP2, CCSD, CCSD(T)) |
+| Basissätze | 28 Basissätze aus den Familien Pople, Dunning, Karlsruhe, pcseg und ECP |
 | Einzelpunktenergie | Elektronische Energie für eine gegebene Geometrie berechnen |
 | Geometrieoptimierung | Stabilste Molekülstruktur automatisch finden |
 | Frequenzanalyse | Schwingungsfrequenzen berechnen und IR-Spektrum erzeugen |
 | Angeregte Zustände (TD-DFT) | Lichtabsorption berechnen und UV-Vis-Spektrum erzeugen |
-| Lösungsmitteleffekte | Implizite Solvatation (PCM) für Wasser, DMSO, Methanol und 5 weitere |
+| Lösungsmitteleffekte | 8 implizite Lösungsmittel (ddCOSMO): Wasser, DMSO, Methanol, Ethanol, Acetonitril, THF, DCM, Toluol |
 | 3D-Visualisierung | Kugel-Stab-Modell + HOMO/LUMO/Elektronendichte-Isoflächen |
-| KI-Assistent | Lokales LLM (integriertes llama.cpp) oder Remote-API, automatische Ergebnis-Erklärung und Fehlerdiagnose |
-| Export | Ergebnisse als JSON oder CSV exportieren |
+| KI-Assistent | Lokales LLM (integriertes llama.cpp) oder Remote-API (OpenAI-kompatibel), automatische Ergebnis-Erklärung und Fehlerdiagnose |
+| Export | Ergebnisse als JSON / CSV / IR / UV-Vis-Daten |
 | Sprachen | 中文 / English / Deutsch / 日本語 |
-| Hell-/Dunkel-Modus | Augenschonend |
+| Theme & Schriftgröße | Hell-/Dunkel-Modus, 4 Schriftgrößen-Stufen |
 
 ---
 
@@ -150,10 +152,10 @@ Die App sucht Coffein in der eingebauten Molekülbibliothek und zeigt eine **Ber
 
 Die Karte verwendet bereits empfohlene Standardwerte (B3LYP / def2-SVP — gute Balance aus Geschwindigkeit und Genauigkeit). Klicke auf **Adjust** für weitere Optionen:
 
-- **Methode**: HF (schnell, aber weniger genau) oder B3LYP (empfohlene DFT-Methode)
-- **Präzision**: Fast / Balanced / Accurate
+- **Methode**: HF, 21 DFT-Funktionale (B3LYP, PBE0, M06-2X, ωB97X-V, CAM-B3LYP …) oder Post-HF (MP2 / CCSD / CCSD(T))
+- **Basis**: 28 Basissätze nach Familien gruppiert (Pople, Dunning, Karlsruhe, pcseg, ECP); Standard ist def2-SVP
 - **Aufgabe**: Einzelpunkt (SP) / Optimierung (Opt) / Frequenz (Freq) / Angeregte Zustände
-- **Lösungsmittel**: Für Simulationen in Lösung ein Lösungsmittel auswählen
+- **Lösungsmittel**: Eines von 8 Lösungsmitteln auswählen, um Berechnungen in Lösung zu simulieren
 
 Beim ersten Versuch einfach alles bei den Standardwerten lassen.
 
@@ -161,7 +163,7 @@ Beim ersten Versuch einfach alles bei den Standardwerten lassen.
 
 Klicke auf den grünen **Compute**-Button. Die Statusleiste rechts zeigt den Berechnungsfortschritt.
 
-Ein kleines Molekül wie Coffein benötigt bei Balanced-Präzision etwa 1–3 Minuten.
+Ein kleines Molekül wie Coffein benötigt mit den Standardwerten (B3LYP / def2-SVP) etwa 1–3 Minuten.
 
 **Schritt 4: Ergebnisse ansehen**
 
@@ -195,7 +197,7 @@ A: Häufigste Ursache ist eine falsche Ladungs- oder Spin-Einstellung (z.B. ein 
 A: XYZ, PDB, MOL/SDF und Gaussian GJF/COM können direkt ins Fenster gezogen werden.
 
 **F: Berechnungen sind sehr langsam?**
-A: Quantenchemische Berechnungen sind rechenintensiv. Größere Moleküle, größere Basissätze und komplexere Aufgaben dauern länger. Beginne mit Balanced-Präzision und Einzelpunktenergie (SP).
+A: Quantenchemische Berechnungen sind rechenintensiv. Größere Moleküle, größere Basissätze und genauere Methoden dauern länger. Beginne mit den Standardeinstellungen (B3LYP / def2-SVP) und einer Einzelpunktrechnung (SP); wechsle bei Bedarf zu genaueren Methoden (MP2, CCSD(T)) oder größeren Basissätzen (cc-pVTZ, def2-TZVP).
 
 **F: Wird Mac oder Linux unterstützt?**
 A: Derzeit nicht. Nur Windows 10/11. Mac/Linux-Support ist nicht geplant.

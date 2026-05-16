@@ -53,16 +53,18 @@ HOMO 是"最高占据分子轨道"，LUMO 是"最低未占分子轨道"。这两
 |------|------|
 | 分子库检索 | 输入中文名、英文名或 IUPAC 名称，自动找到分子并准备计算 |
 | 文件导入 | 拖拽导入 XYZ、PDB、MOL/SDF、Gaussian GJF 格式 |
+| 计算方法 | HF · 21 种 DFT 泛函（B3LYP、PBE0、M06-2X、ωB97X-V、CAM-B3LYP …）· 后 HF（MP2、CCSD、CCSD(T)） |
+| 基组 | 28 个基组，覆盖 Pople、Dunning、Karlsruhe、pcseg、ECP 家族 |
 | 单点能计算 | 计算给定构型下的电子能量 |
 | 几何优化 | 自动搜索最稳定的分子构型 |
 | 频率分析 | 计算振动频率，生成红外光谱 |
 | 激发态（TD-DFT） | 计算光吸收，生成 UV-Vis 光谱 |
-| 溶剂效应 | 模拟水、DMSO、甲醇等 8 种溶剂中的计算 |
-| 3D 可视化 | 球棍模型 + HOMO/LUMO/电子密度轨道等值面 |
-| AI 助手 | 支持本地 LLM（内置 llama.cpp）或远程 API，自动解读结果、诊断失败原因 |
-| 结果导出 | 导出 JSON / CSV，方便后续处理或写入论文 |
+| 溶剂效应 | 8 种隐式溶剂（ddCOSMO）：水、DMSO、甲醇、乙醇、乙腈、THF、DCM、甲苯 |
+| 3D 可视化 | 球棍模型 + HOMO/LUMO/电子密度等值面 |
+| AI 助手 | 支持本地 LLM（内置 llama.cpp）或远程 OpenAI 兼容 API，自动解读结果、诊断失败原因 |
+| 结果导出 | 导出 JSON / CSV / IR / UV-Vis 数据 |
 | 多语言 | 中文 / English / Deutsch / 日本語 |
-| 深色 / 浅色主题 | 保护眼睛 |
+| 主题与字号 | 深色 / 浅色主题，4 档字号缩放 |
 
 ---
 
@@ -130,10 +132,10 @@ ClearQC 目前只支持 **Windows 10 / 11（64 位）**。
 
 计算卡片上默认已经选好了推荐的方法和基组（B3LYP / def2-SVP，平衡速度与精度）。如果你想调整，点击 **Adjust** 按钮展开更多选项：
 
-- **方法（Method）**：HF（速度快但精度低）或 B3LYP（常用 DFT 方法，推荐）
-- **精度（Precision）**：Fast / Balanced / Accurate，对应不同的基组
+- **方法（Method）**：HF、21 种 DFT 泛函（B3LYP、PBE0、M06-2X、ωB97X-V、CAM-B3LYP 等），或后 HF 方法 MP2 / CCSD / CCSD(T)
+- **基组（Basis）**：28 个基组按家族分组（Pople、Dunning、Karlsruhe、pcseg、ECP），默认 def2-SVP
 - **任务（Task）**：单点能（SP）/ 几何优化（Opt）/ 频率（Freq）/ 激发态（Excited）
-- **溶剂**：如果你想模拟溶液中的情况，在下拉框里选一种溶剂
+- **溶剂**：如果你想模拟溶液中的情况，在下拉框里选一种溶剂（共 8 种）
 
 第一次用的话，保持默认就好。
 
@@ -141,7 +143,7 @@ ClearQC 目前只支持 **Windows 10 / 11（64 位）**。
 
 点击绿色的 **Compute** 按钮，计算开始。右侧状态栏会显示计算进度。
 
-小分子（如咖啡因）用 Balanced 精度大约需要 1–3 分钟。
+小分子（如咖啡因）用默认设置（B3LYP / def2-SVP）大约需要 1–3 分钟。
 
 **第四步：查看结果**
 
@@ -180,7 +182,7 @@ A：支持直接拖入 XYZ、PDB、MOL/SDF、Gaussian GJF/COM 格式的结构文
 
 **Q：计算速度很慢？**
 
-A：量子化学计算本身就比较耗时。分子越大、基组越大、任务越复杂，耗时越长。建议先用 Balanced 精度（def2-SVP 基组）做单点能（SP）计算，熟悉流程后再提高精度。
+A：量子化学计算本身就比较耗时。分子越大、基组越大、方法越精确，耗时越长。建议先保持默认（B3LYP / def2-SVP）做单点能（SP）计算，熟悉流程后再换更精确的方法（MP2、CCSD(T)）或更大基组（cc-pVTZ、def2-TZVP）。
 
 **Q：可以在 Mac 或 Linux 上用吗？**
 

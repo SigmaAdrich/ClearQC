@@ -73,16 +73,18 @@ Shows how much excess charge each atom carries, helping you understand polarity,
 |---------|-------------|
 | Molecule library | Type a name (English, Chinese, or IUPAC) to auto-complete and start a calculation |
 | File import | Drag and drop XYZ, PDB, MOL/SDF, or Gaussian GJF files |
+| Methods | HF · 21 DFT functionals (B3LYP, PBE0, M06-2X, ωB97X-V, CAM-B3LYP …) · post-HF (MP2, CCSD, CCSD(T)) |
+| Basis sets | 28 basis sets across Pople, Dunning, Karlsruhe, pcseg, and ECP families |
 | Single-point energy | Calculate the electronic energy for a given geometry |
 | Geometry optimization | Find the most stable molecular structure automatically |
 | Frequency analysis | Compute vibrational frequencies and generate an IR spectrum |
 | Excited states (TD-DFT) | Compute light absorption and generate a UV-Vis spectrum |
-| Solvent effects | Implicit solvation (PCM) for water, DMSO, methanol, and 5 more |
+| Solvent effects | 8 implicit solvents (ddCOSMO): water, DMSO, methanol, ethanol, acetonitrile, THF, DCM, toluene |
 | 3D visualization | Ball-and-stick model + HOMO/LUMO/density isosurfaces |
-| AI Assistant | Local LLM (built-in llama.cpp) or remote API, auto-explains results and diagnoses failures |
-| Export | Export results as JSON or CSV for further analysis |
+| AI Assistant | Local LLM (built-in llama.cpp) or remote OpenAI-compatible API, auto-explains results and diagnoses failures |
+| Export | Results as JSON / CSV / IR / UV-Vis data |
 | Languages | 中文 / English / Deutsch / 日本語 |
-| Dark / Light theme | Easy on the eyes |
+| Theme & font size | Dark / Light theme, 4-step font size scaling |
 
 ---
 
@@ -150,10 +152,10 @@ The app will look up caffeine in the built-in molecule library and show a **calc
 
 The card defaults to a recommended method and basis set (B3LYP / def2-SVP — a good balance of speed and accuracy). Click **Adjust** to expand more options:
 
-- **Method**: HF (fast but less accurate) or B3LYP (recommended DFT method)
-- **Precision**: Fast / Balanced / Accurate (different basis sets)
+- **Method**: HF, 21 DFT functionals (B3LYP, PBE0, M06-2X, ωB97X-V, CAM-B3LYP, …), or post-HF (MP2 / CCSD / CCSD(T))
+- **Basis**: 28 basis sets grouped by family (Pople, Dunning, Karlsruhe, pcseg, ECP); default def2-SVP
 - **Task**: Single Point (SP) / Optimization (Opt) / Frequency (Freq) / Excited States
-- **Solvent**: Choose a solvent if you want to simulate solution-phase conditions
+- **Solvent**: Pick one of 8 solvents to simulate solution-phase conditions
 
 For your first try, leave everything at the defaults.
 
@@ -161,7 +163,7 @@ For your first try, leave everything at the defaults.
 
 Click the green **Compute** button. The right-side status bar shows calculation progress.
 
-A small molecule like caffeine takes about 1–3 minutes at Balanced precision.
+A small molecule like caffeine takes about 1–3 minutes at the default settings (B3LYP / def2-SVP).
 
 **Step 4: View results**
 
@@ -195,7 +197,7 @@ A: The most common cause is incorrect charge or spin settings (e.g., computing a
 A: XYZ, PDB, MOL/SDF, and Gaussian GJF/COM files can be dragged directly into the window.
 
 **Q: Calculations are slow?**
-A: Quantum chemistry calculations are inherently compute-intensive. Larger molecules, larger basis sets, and more complex tasks all take longer. Start with Balanced precision and Single Point (SP) to get familiar with the workflow.
+A: Quantum chemistry calculations are inherently compute-intensive. Larger molecules, larger basis sets, and more accurate methods all take longer. Start with the default settings (B3LYP / def2-SVP) and a Single Point (SP) calculation to get familiar with the workflow, then move up to more accurate methods (MP2, CCSD(T)) or larger basis sets (cc-pVTZ, def2-TZVP) when needed.
 
 **Q: Is Mac or Linux supported?**
 A: Not currently. Windows 10/11 only. Mac/Linux support is not planned at this time.
