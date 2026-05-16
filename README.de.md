@@ -119,15 +119,7 @@ Nach dem Neustart ist WSL 2 bereit. Bei Problemen hilft die [offizielle Microsof
 
 Lade die neueste Version von der [Releases-Seite](https://github.com/SigmaAdrich/ClearQC/releases/latest) herunter.
 
-Es gibt zwei Installationspakete:
-
-**📦 Offline-Installer (empfohlen für Erstnutzer)**
-Dateiname enthält `offline`, ~135 MB. Das Berechnungsmodul ist bereits enthalten — herunterladen, doppelklicken, fertig. **Keine Internetverbindung notwendig.**
-
-**📦 Online-Installer (bei guter Internetverbindung)**
-Dateiname enthält `online`, ~14 MB. Der Installer selbst ist klein, aber beim **ersten Start wird das ~120 MB große Berechnungsmodul heruntergeladen** (Internetverbindung erforderlich). Danach ist keine Verbindung mehr nötig.
-
-> **Nicht sicher, welchen du nehmen sollst?** Nimm den Offline-Installer — der funktioniert immer.
+Der `.exe`-Installer ist ca. 135 MB groß. Das Berechnungsmodul ist bereits enthalten — **keine Internetverbindung** ist für Installation oder Nutzung erforderlich.
 
 ### Installationsschritte
 
@@ -176,9 +168,26 @@ Nach Abschluss der Berechnung erscheint eine Ergebniskarte mit:
 
 Das rechte Panel zeigt gleichzeitig die 3D-Struktur. Mit dem Dropdown-Menü kannst du zwischen **HOMO, LUMO und Elektronendichte**-Isoflächen wechseln.
 
-**Schritt 5 (optional): KI-Erklärung**
+**Schritt 5 (optional): KI-Erklärung der Ergebnisse**
 
-Die Ergebniskarte hat unten einen **AI Explain**-Button. Wenn du einen KI-Endpunkt konfiguriert hast (Einstellungen → KI-Konfiguration), wird nach dem Klicken eine verständliche Erklärung der Ergebnisse generiert.
+ClearQC bringt kein eigenes KI-Modell mit — du verbindest eine OpenAI-kompatible API selbst. Sobald sie konfiguriert ist, werden die Buttons **AI Explain** (Ergebnis erklären) und **AI Diagnose** (Fehlerdiagnose) auf der Ergebniskarte aktiv.
+
+**Konfigurations-Schritte:**
+
+1. Top-Menü **Settings → AI Configuration…** öffnet den Konfigurationsdialog
+2. Drei Felder ausfüllen:
+
+   | Feld | Inhalt | Beispiel |
+   |---|---|---|
+   | **API Base URL** | Der API-Endpunkt (ohne abschließendes `/chat/completions`) | OpenAI: `https://api.openai.com/v1`<br>DeepSeek: `https://api.deepseek.com/v1`<br>Moonshot: `https://api.moonshot.cn/v1` |
+   | **API Key** | Dein Schlüssel, beginnt meist mit `sk-`. Auf der „API Keys"-Seite des Anbieters kopieren | `sk-xxxxxxxxxxxxx` |
+   | **Model** | Modellname. Wähle etwas Günstiges und Schnelles | `gpt-4o-mini` / `deepseek-chat` / `moonshot-v1-8k` |
+
+3. **Save** klicken
+
+Zurück zur Ergebniskarte und auf **AI Explain** klicken — die KI beschreibt in Klartext, was berechnet wurde, was die Energie bedeutet, ob die Ladungsverteilung plausibel ist und worauf du achten solltest. Schlägt eine Berechnung fehl, erscheint stattdessen **AI Diagnose** und analysiert den Fehler (meist falsche Ladungs-/Spin-Einstellung oder unpassende Methode).
+
+> **Keine kostenpflichtige API?** Die meisten LLM-Anbieter geben bei der Registrierung kostenloses Guthaben (OpenAI-Probekontingent, DeepSeek-Willkommensbonus, Moonshot-Monatslimit). Einfach registrieren, auf der „API Keys"-Seite einen Schlüssel erstellen und einfügen.
 
 ---
 
@@ -206,7 +215,11 @@ A: Derzeit nicht. Nur Windows 10/11. Mac/Linux-Support ist nicht geplant.
 
 ## Feedback & Support
 
-Fehler gefunden oder eine Idee für neue Funktionen? Erstelle ein Issue auf der [Issues-Seite](https://github.com/SigmaAdrich/ClearQC/issues).
+Fehler gefunden, Wünsche für neue Funktionen oder einfach Lust auf Austausch über quantenchemische Workflows? Erreich uns über einen der folgenden Kanäle:
+
+- **GitHub Issues**: [Fehler melden oder Features vorschlagen](https://github.com/SigmaAdrich/ClearQC/issues)
+- **E-Mail**: 540059610@qq.com
+- **Discord-Server**: <https://discord.gg/gNkRV2xkC3>
 
 ---
 

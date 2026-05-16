@@ -119,15 +119,7 @@ After the restart, WSL 2 is ready. If you run into issues, see the [official Mic
 
 Go to the [Releases page](https://github.com/SigmaAdrich/ClearQC/releases/latest) to download the latest version.
 
-Two installer options are available:
-
-**📦 Offline installer (recommended for first-time users)**
-Filename contains `offline`, ~135 MB. The calculation engine is already bundled inside — download, double-click, done. **No internet required.**
-
-**📦 Online installer (if you have a good connection)**
-Filename contains `online`, ~14 MB. The installer itself is small, but **requires an internet connection on first launch** to download ~120 MB of calculation engine. After that, no internet needed.
-
-> **Not sure which to pick?** Choose the offline installer — it always works.
+The `.exe` installer is ~135 MB. The calculation engine is bundled inside, so **no internet is required** for installation or use.
 
 ### Installation steps
 
@@ -178,7 +170,24 @@ The right panel simultaneously updates with the 3D structure. Use the dropdown m
 
 **Step 5 (optional): Let AI explain the results**
 
-The result card has an **AI Explain** button at the bottom. If you've configured an AI endpoint (Settings → AI Configuration), clicking it will generate a plain-language interpretation of your results.
+ClearQC does not ship any AI model — you bring your own OpenAI-compatible API. Once configured, the **AI Explain** (interpret results) and **AI Diagnose** (debug failures) buttons on the result card become active.
+
+**Configuration steps:**
+
+1. Top menu **Settings → AI Configuration…** opens the configuration dialog
+2. Fill in the three fields:
+
+   | Field | What to put | Example |
+   |---|---|---|
+   | **API Base URL** | The API endpoint (without trailing `/chat/completions`) | OpenAI: `https://api.openai.com/v1`<br>DeepSeek: `https://api.deepseek.com/v1`<br>Moonshot: `https://api.moonshot.cn/v1` |
+   | **API Key** | Your key, usually starts with `sk-`. Copy it from the provider's "API Keys" page | `sk-xxxxxxxxxxxxx` |
+   | **Model** | Model name. Pick something cheap and fast | `gpt-4o-mini` / `deepseek-chat` / `moonshot-v1-8k` |
+
+3. Click **Save**
+
+Now go back to the result card and click **AI Explain** — the AI will describe in plain language what was computed, what the energy means, whether the charge distribution looks reasonable, and what to look out for. If a calculation fails, the result card shows **AI Diagnose** instead, which analyzes the error (most often an incorrect charge/spin setting or an inappropriate method).
+
+> **Don't have a paid API?** Most LLM providers offer free credits on signup (OpenAI trial, DeepSeek welcome credit, Moonshot monthly free tier). Just register, create an API key on the provider's "API Keys" page, and paste it in.
 
 ---
 
@@ -206,7 +215,11 @@ A: Not currently. Windows 10/11 only. Mac/Linux support is not planned at this t
 
 ## Feedback & Support
 
-Found a bug or have a feature request? Please open an issue on the [Issues page](https://github.com/SigmaAdrich/ClearQC/issues).
+Found a bug, have a feature request, or want to chat about quantum chemistry workflows? Reach out via any of the following:
+
+- **GitHub Issues**: [report bugs or request features](https://github.com/SigmaAdrich/ClearQC/issues)
+- **Email**: 540059610@qq.com
+- **Discord server**: <https://discord.gg/gNkRV2xkC3>
 
 ---
 

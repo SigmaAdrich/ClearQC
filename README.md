@@ -99,15 +99,7 @@ ClearQC 目前只支持 **Windows 10 / 11（64 位）**。
 
 前往 [Releases 页面](https://github.com/SigmaAdrich/ClearQC/releases/latest) 下载最新版本。
 
-有两种安装包可以选择：
-
-**📦 offline 版（推荐初次使用）**
-文件名包含 `offline`，约 135 MB。已经把计算引擎打包在内，下载完双击安装即可，**不需要网络**。
-
-**📦 online 版（适合网络较好的情况）**
-文件名包含 `online`，约 14 MB。安装包本身很小，但**首次启动时需要联网**下载约 120 MB 的计算引擎，下载完成后后续使用不再需要网络。
-
-> **我该选哪个？** 如果你不确定，选 offline 版，一定不会出错。
+`.exe` 安装包约 135 MB，**计算引擎已经打包在内**，整个安装与使用过程都不需要联网。
 
 ### 安装步骤
 
@@ -158,7 +150,24 @@ ClearQC 目前只支持 **Windows 10 / 11（64 位）**。
 
 **第五步（可选）：让 AI 解读结果**
 
-结果卡片底部有 **AI Explain** 按钮。如果你配置了 AI 接口（Settings → AI Configuration），点击后 AI 会用自然语言帮你解读计算结果。
+ClearQC 不内置 AI 模型，需要你自己接一个 OpenAI 兼容的 API。配置好之后，结果卡片底部的 **AI Explain**（解读结果）和 **AI Diagnose**（诊断错误）按钮就能用了。
+
+**配置步骤：**
+
+1. 顶部菜单 **Settings → AI Configuration…**，弹出配置窗口
+2. 填入三个字段：
+
+   | 字段 | 说明 | 示例 |
+   |---|---|---|
+   | **API Base URL** | API 接口地址（不含末尾的 `/chat/completions`） | OpenAI：`https://api.openai.com/v1`<br>DeepSeek：`https://api.deepseek.com/v1`<br>Moonshot：`https://api.moonshot.cn/v1` |
+   | **API Key** | 你的密钥，通常以 `sk-` 开头，从对应平台的"API Keys"页面复制 | `sk-xxxxxxxxxxxxx` |
+   | **Model** | 模型名，建议挑便宜且速度快的 | `gpt-4o-mini` / `deepseek-chat` / `moonshot-v1-8k` |
+
+3. 点击 **Save**
+
+回到结果卡片，点 **AI Explain** —— AI 会用自然语言告诉你：算出了什么、能量代表什么、电荷分布是否合理、哪里需要注意。如果计算失败了，结果卡片上会出现 **AI Diagnose**，AI 会分析报错原因（最常见是电荷/自旋写错或方法不适用）。
+
+> **没有付费 API？** 几乎所有大模型平台都赠送免费额度（OpenAI 试用、DeepSeek 注册赠金、Moonshot 月度免费额度）。注册后到平台的 API Keys 页面创建一个 key 就能用。
 
 ---
 
@@ -192,7 +201,11 @@ A：目前只支持 Windows 10 / 11。Mac / Linux 版本暂无计划。
 
 ## 反馈与支持
 
-遇到 Bug 或有功能建议，欢迎在 [Issues](https://github.com/SigmaAdrich/ClearQC/issues) 页面提交。
+遇到 Bug、有功能建议，或者想交流量子化学计算的使用经验，可以通过以下任一方式联系：
+
+- **GitHub Issues**：[提交 Bug 或功能建议](https://github.com/SigmaAdrich/ClearQC/issues)
+- **邮箱**：540059610@qq.com
+- **Discord 服务器**：<https://discord.gg/gNkRV2xkC3>
 
 ---
 
