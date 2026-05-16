@@ -218,7 +218,7 @@ A: Derzeit nicht. Nur Windows 10/11. Mac/Linux-Support ist nicht geplant.
 Fehler gefunden, Wünsche für neue Funktionen oder einfach Lust auf Austausch über quantenchemische Workflows? Erreich uns über einen der folgenden Kanäle:
 
 - **GitHub Issues**: [Fehler melden oder Features vorschlagen](https://github.com/SigmaAdrich/ClearQC/issues)
-- **E-Mail**: 540059610@qq.com
+- **QQ群**: 1103715435
 - **Discord-Server**: <https://discord.gg/gNkRV2xkC3>
 
 ---

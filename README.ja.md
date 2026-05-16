@@ -218,7 +218,7 @@ A：現時点ではWindows 10/11のみ対応しています。Mac/Linux版は予
 バグの報告・機能の提案、量子化学計算ワークフローについての相談は、以下のいずれかの方法でご連絡ください：
 
 - **GitHub Issues**：[バグ報告・機能リクエスト](https://github.com/SigmaAdrich/ClearQC/issues)
-- **メール**：540059610@qq.com
+- **QQ群**：1103715435
 - **Discord サーバー**：<https://discord.gg/gNkRV2xkC3>
 
 ---

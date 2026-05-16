@@ -218,7 +218,7 @@ A: Not currently. Windows 10/11 only. Mac/Linux support is not planned at this t
 Found a bug, have a feature request, or want to chat about quantum chemistry workflows? Reach out via any of the following:
 
 - **GitHub Issues**: [report bugs or request features](https://github.com/SigmaAdrich/ClearQC/issues)
-- **Email**: 540059610@qq.com
+- **QQ群**: 1103715435
 - **Discord server**: <https://discord.gg/gNkRV2xkC3>
 
 ---

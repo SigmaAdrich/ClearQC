@@ -204,7 +204,7 @@ A：目前只支持 Windows 10 / 11。Mac / Linux 版本暂无计划。
 遇到 Bug、有功能建议，或者想交流量子化学计算的使用经验，可以通过以下任一方式联系：
 
 - **GitHub Issues**：[提交 Bug 或功能建议](https://github.com/SigmaAdrich/ClearQC/issues)
-- **邮箱**：540059610@qq.com
+- **QQ群**：1103715435
 - **Discord 服务器**：<https://discord.gg/gNkRV2xkC3>
 
 ---
